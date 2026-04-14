@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Plus, Building, Clock, CheckCircle2, FileCheck, ChevronRight, BarChart } from "lucide-react";
 
 export default async function AssesmentPage() {
-    const { data: assessments, error } = await supabase.from('assessments').select('*, clients(name)').order('created_at', { ascending: false });
+    const { data: rawAssessments, error } = await supabase.from('assessments').select('*, clients(name)').order('created_at', { ascending: false });
+    const assessments = rawAssessments as any[];
     
     if(error) {
         console.error("Error al obtener las evaluaciones: ", error.message);

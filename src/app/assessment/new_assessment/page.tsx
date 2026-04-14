@@ -35,7 +35,8 @@ export default function NewAssesmentPage() {
             return;
         }
         if(data) {
-            const assessment_id = data[0].id;
+            const returnedData = data as any[];
+            const assessment_id = returnedData[0].id;
             router.push(`/assessment/${assessment_id}`);
             router.refresh();
         }
