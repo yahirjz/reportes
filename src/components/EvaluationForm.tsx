@@ -115,12 +115,12 @@ export default function EvaluationForm({assessment_id, controls}: EvaluationForm
                                             </label>
                                             <input 
                                                 type="number"
-                                                min="0" max="5"
+                                                min="0" max="3"
                                                 placeholder="Ej. 3"
                                                 className="border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                                                 onChange={(e) => handleFindingChange(control.id, "maturity_level", Number(e.target.value))}
                                             />
-                                            <span className="text-xs text-slate-400">Escala TISAX 0 al 5</span>
+                                            <span className="text-xs text-slate-400">Escala TISAX 1 al 3</span>
                                         </div>
 
                                         {/* Descripcion (Mediano) */}

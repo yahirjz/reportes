@@ -50,7 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </div>
               <div>
                 <p className="text-sm font-medium text-white">Yair</p>
-                <p className="text-xs text-slate-400">Auditor TISAX</p>
+                <p className="text-xs text-slate-400">TISAX</p>
               </div>
             </div>
           </div>
