@@ -2,13 +2,13 @@ import { supabase } from "@/lib/supabase";
 import EvaluationForm from "@/components/EvaluationForm";
 import Link from "next/link";
 import { ArrowLeft, Building, ClipboardCheck, Clock, CheckCircle2, CalendarDays, BarChart } from "lucide-react";
+import { Controls } from "@/lib/types";
 
 export default async function AssesmentIdPage({params}: {params: Promise<{id: string}>}) {
     const { id } = await params
     const { data: assessment, error} = await supabase.from('assessments').select('*,  clients(name)').eq('id', id).single()
-    const { data: rawControls, error: controlsError} = await supabase.from('controls').select('*')
+    const { data: rawControls, error: controlsError} = await supabase.from('controls').select('*').returns<Controls[]>()
     
-    // Ordenamiento natural (1.1.2 irá antes que 1.1.10)
     const controls = rawControls?.sort((a, b) => a.code.localeCompare(b.code, undefined, { numeric: true })) || [];
     // Fallback de seguridad estilizado (Si no hay db)
     if(error || !assessment){
