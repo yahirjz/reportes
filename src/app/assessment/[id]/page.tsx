@@ -6,7 +6,8 @@ import { Controls } from "@/lib/types";
 
 export default async function AssesmentIdPage({params}: {params: Promise<{id: string}>}) {
     const { id } = await params
-    const { data: assessment, error} = await supabase.from('assessments').select('*,  clients(name)').eq('id', id).single()
+    const { data: rawAssessment, error} = await supabase.from('assessments').select('*,  clients(name)').eq('id', id).single()
+    const assessment = rawAssessment as any;
     const { data: rawControls, error: controlsError} = await supabase.from('controls').select('*').returns<Controls[]>()
     
     const controls = rawControls?.sort((a, b) => a.code.localeCompare(b.code, undefined, { numeric: true })) || [];
