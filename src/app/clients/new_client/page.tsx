@@ -16,7 +16,7 @@ export default function NewClientPage() {
             name,
             address,
             representative_name: representative
-        })
+        } as any)
         if(error) {
             console.error("Error al guardar el cliente: ", error.message);
             return;
