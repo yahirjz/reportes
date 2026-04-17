@@ -1,9 +1,11 @@
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { Plus, Building, Clock, CheckCircle2, FileCheck, ChevronRight, BarChart } from "lucide-react";
+import DownloadReportButton from "@/components/DownloadReportButton";
 
 export default async function AssesmentPage() {
-    const { data: rawAssessments, error } = await supabase.from('assessments').select('*, clients(name)').order('created_at', { ascending: false });
+    /// Traemos todas la relaciones de la tabla assessments
+    const { data: rawAssessments, error } = await supabase.from('assessments').select('*, clients(name), findings(*)').order('created_at', { ascending: false });
     const assessments = rawAssessments as any[];
     
     if(error) {
@@ -122,6 +124,13 @@ export default async function AssesmentPage() {
                                                 Ver Evaluación
                                                 <ChevronRight className="w-4 h-4" />
                                             </Link>
+                                            {assessment.status === 'completed' && (
+                                                <DownloadReportButton 
+                                                    assessment={assessment}  // Objeto completo de la evaluación
+                                                    clientName={assessment.clients?.name} // Nombre de la empresa
+                                                    findings={assessment.findings} // Array de hallazgos
+                                                />
+                                            )}
                                         </td>
                                     </tr>
                                 ))}

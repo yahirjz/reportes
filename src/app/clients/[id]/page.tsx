@@ -6,7 +6,7 @@ import { ArrowLeft, Building2, MapPin, UserCircle, Briefcase, CalendarDays } fro
 export default async function ClientIdPage({params}: {params: Promise<{id: string}>}) {
     const {id} = await params;
     const {data: rawClient, error} = await supabase.from("clients").select("*").eq("id", id).single();
-    const client = rawClient as any;
+    const client = rawClient as unknown as Clients;
     
     if (error || !client) {
         return (

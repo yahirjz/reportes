@@ -70,10 +70,10 @@ export default async function AssesmentIdPage({params}: {params: Promise<{id: st
                 {/* Metadatos Rápidos (Grid Estadístico) */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
-                        <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Puntaje General</p>
+                        <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Nivel de Madurez</p>
                         <div className="flex items-center gap-2">
                             <BarChart className="w-5 h-5 text-indigo-600" />
-                            <p className="text-lg font-bold text-slate-900">{assessment.overall_score || 0}%</p>
+                            <p className="text-lg font-bold text-slate-900">{assessment.overall_score || 0} <span className="text-sm font-normal text-slate-500">/ 3.0</span></p>
                         </div>
                     </div>
                     

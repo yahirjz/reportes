@@ -1,5 +1,5 @@
 import React from "react";
-import "./globals.css";
+import "./globals.css"; 
 import Link from "next/link";
 import { LayoutDashboard, Users, FileCheck, ShieldCheck } from "lucide-react";
 
@@ -11,16 +11,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* SIDEBAR (NAV) */}
         <nav className="w-64 bg-slate-900 text-white flex flex-col shadow-2xl h-full z-10 hidden md:flex shrink-0">
           {/* BRANDING */}
-          <div className="flex items-center gap-3 px-6 py-8 border-b border-slate-800">
-            <div className="bg-blue-600 p-2 rounded-lg shadow-lg shadow-blue-900/20">
-              <ShieldCheck className="w-6 h-6 text-white" />
+          <Link href="/" className="flex items-center gap-3 px-6 py-8 border-b border-slate-800 hover:bg-slate-800/50 transition-colors cursor-pointer block">
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-600 p-2 rounded-lg shadow-lg shadow-blue-900/20">
+                <ShieldCheck className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold tracking-tight text-white leading-none">REPORTES</h1>
+                <p className="text-xs text-slate-400 font-medium">TISAX</p>
+              </div>
             </div>
-
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-white leading-none">REPORTES</h1>
-              <p className="text-xs text-slate-400 font-medium">TISAX</p>
-            </div>
-          </div>
+          </Link>
 
           {/* MENÚ DE NAVEGACIÓN */}
           <div className="flex-1 py-6 px-4 space-y-2">
